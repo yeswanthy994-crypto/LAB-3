@@ -27,10 +27,14 @@ jobs:
           cache: npm
 
       - name: Install
-        run: npm ci
+        run: |
+          cd lab
+          npm ci
 
       - name: Build
-        run: npm run build
+        run: |
+          cd lab
+          npm run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -38,7 +42,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: lab/dist
 
   deploy:
     needs: build
